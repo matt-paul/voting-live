@@ -12,10 +12,9 @@ export function next(state) {
   });
 }
 
-export function vote(state, entry) {
-  //"reach into the nested data structure path ['vote', 'tally', 'Trainspotting'], and apply this function there. If there are keys missing along the path, create new Maps in their place. If the value at the end is missing, initialize it with 0". 
-  return state.updateIn(
-    ['vote', 'tally', entry],
+export function vote(voteState, entry) {
+  return voteState.updateIn(
+    ['tally', entry],
     0,
     tally => tally + 1
     );
@@ -46,3 +45,6 @@ export function next(state) {
     });
   }
 }
+
+export const INITIAL_STATE = Map();
+
